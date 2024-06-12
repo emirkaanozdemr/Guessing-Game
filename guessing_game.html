@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html> 
+ <head> 
+  <title>Guessing Game</title> 
+  <meta charset="utf-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin=“anonymous">
+ <style>
+
+ .style1:hover{
+  background-color:gray;
+}
+.style1{
+  color:blue;
+  border-style:hidden;
+  border-radius:8.76px;
+}
+div{
+  width:1420x;
+  height:350px;
+  background-color:lemonchiffon;
+  text-align:center;
+  z-index:2;
+}
+.input{
+  border-radius:1234px;
+}
+body {
+  background-color:yellow;
+  z-index:1;
+}
+</style>
+</head> 
+ <body> 
+  <div style="margin-top:125px; margin-bottom:125px;">
+  <header>
+  <h1>Guessing Game</h1> 
+  </header>
+  <p class="style">Try to guess the number I kept!</p> 
+  <input placeholder="Write a number" class="type=&quot;number&quot;" id="guessInput"> <button class="style1" id="guessButton">Guess</button> 
+  <p id="message"></p> 
+  <p id="attempts"></p> 
+  </div>
+  <script>
+      const targetNumber = Math.floor(Math.random() * 100) + 1;
+      let attempts = 0;
+
+      
+      const guessInput = document.getElementById("guessInput");
+      const guessButton = document.getElementById("guessButton");
+      const message = document.getElementById("message");
+      const attemptsDisplay = document.getElementById("attempts");
+
+      
+      guessButton.addEventListener("click", function () {
+        const userGuess = parseInt(guessInput.value);
+        attempts++;
+        attemptsDisplay.textContent = "Prediction Attempts: " + attempts;
+
+        if (userGuess === targetNumber) {
+          message.textContent = "Congratulations! You guessed it right.";
+          message.style.color = "green";
+          guessInput.disabled = true;
+          guessButton.disabled = true;
+        } else if (userGuess < targetNumber) {
+          message.textContent = "Try a higher number.";
+          message.style.color = "blue";
+        } else {
+          message.textContent = "Try a lower number.";
+          message.style.color = "blue";
+        }
+        if (attempts > 9){
+          alert("Haklarınız tükendi!");
+          setInterval(function(){
+window.location.reload(false);
+document.getElementById("guessButton ").className += "  yeniClassAdi"
+},5000);
+        }
+      });
+    </script> 
+ 
+ <hr>
+ <footer>Designed by Emir Kaan Özdemir</footer>
+</body>
+</html>
